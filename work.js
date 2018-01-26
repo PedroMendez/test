@@ -4,11 +4,11 @@ var Set = require("collections/set");
 var Object = require("collections/shim-object");
 var work = express();
 
-class ResultItem {
-	constructor(actualWord, sentencesIncluded, occurrences) {
+class Result {
+	constructor(actualWord, occurrences, sentencesIncluded) {
 		this.word = actualWord;	
-		this.sentences = sentencesIncluded;
-		this.occurrences = occurrences;
+		this.total_occurrences = occurrences;
+		this.sentence_indexes = sentencesIncluded;
 	}
 }
 
@@ -28,7 +28,7 @@ class Paragraph {
 	    	    if(this.paragraphArray.array[s].search(w) !== -1) {
 	    	    	this.foundParagraph.push(s);
 	    	    	this.foundSentences.push(this.foundParagraph.array[s]);
-	    	    	this.resultItem = new ResultItem(w, this.foundParagraph.array, this.foundSentences.length);
+	    	    	this.resultItem = new Result(w, this.foundSentences.length, this.foundParagraph.array);
 	    	    }        
 	        }
 	        this.resultParagraph.add(this.resultItem);
