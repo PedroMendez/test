@@ -4,7 +4,7 @@ var Set = require("collections/set");
 var Object = require("collections/shim-object");
 var work = express();
 
-class ResultItemParagraph {
+class ResultItem {
 	constructor(actualWord, sentencesIncluded, occurrences) {
 		this.word = actualWord;	
 		this.sentences = sentencesIncluded;
@@ -28,10 +28,10 @@ class Paragraph {
 	    	    if(this.paragraphArray.array[s].search(w) !== -1) {
 	    	    	this.foundParagraph.push(s);
 	    	    	this.foundSentences.push(this.foundParagraph.array[s]);
-	    	    	this.resultItemParagraph = new ResultItemParagraph(w, this.foundParagraph.array, this.foundSentences.length);
+	    	    	this.resultItem = new ResultItem(w, this.foundParagraph.array, this.foundSentences.length);
 	    	    }        
 	        }
-	        this.resultParagraph.add(this.resultItemParagraph);
+	        this.resultParagraph.add(this.resultItem);
 	    }    
     }
 };
