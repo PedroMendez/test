@@ -43,7 +43,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-var work = require('./work');
+var custom = require('./work');
 
 module.exports = app;
 
